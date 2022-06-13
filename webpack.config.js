@@ -22,13 +22,17 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.less$/i,
+        test: /\.(less|css)$/i,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
           'less-loader'
         ]
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader'
       }
     ]
   },
@@ -38,7 +42,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, './src', 'index.html'),
+      template: path.join(__dirname, './public', 'index.html'),
       filename: 'index.html'
     }),
     new CleanWebpackPlugin(),
